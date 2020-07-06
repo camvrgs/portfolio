@@ -1,0 +1,8 @@
+client/build/*
+client/node_modules/*
+
+server/www/*
+
+*.pyc
+
+Pipfile.lock
