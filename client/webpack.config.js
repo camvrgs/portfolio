@@ -1,26 +1,15 @@
-module.exports = {
-  entry: [
-    './src/scripts/app/index.js'
-  ],
-  output: {
-    path: __dirname,
-    publicPath: '/',
-    filename: 'bundle.js'
-  },
-  module: {
-    loaders: [{
-      exclude: /node_modules/,
-      loader: 'babel-loader',
-      query: {
-        presets: ['react', 'es2015', 'stage-1']
-      }
-    }]
-  },
-  resolve: {
-    extensions: ['.js', '.jsx']
-  },
-  devServer: {
-    historyApiFallback: true,
-    contentBase: './'
+const { merge } = require('webpack-merge')
+const common = require('./webpack/common.js')
+const prod = require('./webpack/prod.js')
+const dev = require('./webpack/dev.js')
+
+module.exports = env => {
+  switch (env) {
+    case 'development':
+      return merge(common, dev)
+    case 'production':
+      return merge(common, prod)
+    default:
+      throw new Error('No matching configuration was found!')
   }
-};
+}

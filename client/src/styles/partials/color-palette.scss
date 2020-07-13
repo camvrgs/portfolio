@@ -1,0 +1,58 @@
+/// SCSS for map syntax for ease of use for color palette
+
+$color-palette: (
+  'white': #fefefe,
+  'black': #111312,
+  'grey': (
+    'light': #929292,
+    'base': #4a4a4a,
+    'dark': #333333,
+  ),
+  'blue': (
+    'ultralight': #e3edfb,
+    'light': #aac2ee,
+    'base': #6894ed,
+    'dark': #123cd6,
+  ),
+  'green': (
+    'light': #c4f5ac,
+    'base': #94ed68,
+    'dark': #74e83a,
+  ),
+  'red': (
+    'light': #f98b83,
+    'base': #f53f31,
+    'dark': #f42a1b,
+  ),
+  'orange': (
+    'light': #fed382,
+    'base': #feb62f,
+    'dark': #feae19,
+  )
+);
+
+/// using any map, parse and generate classes with set attributes
+/// ex:
+/// .class: @include map-parser(*args)
+/// white: (base: #000, light: #eee) -> .class-white & .class-white-light
+
+@mixin map-parser($map, $attribute, $base: 'base') {
+  @each $key, $value in $map {
+    &#{if($key != $base, -#{$key}, '')} {
+      @if type-of($value) == 'map' {
+        @include map-parser($value, $attribute, $base);
+      }
+      @else {
+        #{$attribute}: $value;
+      }
+    }
+  }
+}
+
+
+.theme-bg {
+  @include map-parser($color-palette, 'background-color', 'base');
+}
+.theme-text {
+  @include map-parser($color-palette, 'color', 'base');
+}

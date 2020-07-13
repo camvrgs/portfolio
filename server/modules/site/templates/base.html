@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% render_bundle client_app_style_slug 'css' %}
     <link rel="icon" type="image/png" href="{% static 'icons/simple_c-50.png' %}"/>
-    <link rel="stylesheet" href="{% static 'styles/bulma.css' %}">
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
 
     {% block extraheadstyles %}{% endblock %}
@@ -15,7 +14,7 @@
     {% block body %}
     <header>
       {% block header %}
-        <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+        <nav class="navbar theme-bg-blue" role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
             <a class="navbar-item" href="/">
               <img style="width:30px;height:30px;" src="{% static 'icons/simple_c-300.png' %}" srcset="{% static 'icons/simple_c.svg' %}" alt="Simple C Logo">
