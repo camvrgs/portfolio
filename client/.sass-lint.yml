@@ -17,6 +17,9 @@ files:
   include: 'src/**/*.s+(a|c)ss'
   ignore:
     - 'src/styles/vendor/**/*.s+(a|c)ss'
+    # !! sass-lint is unmaintained !!
+    # does not support most recent Sass updates, ie. @use
+    # - 'src/styles/partials/**/*.s+(a|c)ss'
     - 'node_modules/**/*.s+(a|c)ss'
 # Rule Configuration
 rules:

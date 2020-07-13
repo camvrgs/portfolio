@@ -21,7 +21,7 @@ import store from './store'
 
 ReactDOM.render(
   <Provider store={store}>
-    <div className='app-app'>
+    <div className='app'>
       <App />
     </div>
   </Provider>

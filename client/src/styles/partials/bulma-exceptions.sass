@@ -1,4 +1,6 @@
 // bulma-exceptions.sass
+@use './map-deep-get' as *
+@use './color-palette' as *
 
 $navbar-height: 52px
 $footer-height: 53px
@@ -6,3 +8,9 @@ $footer-height: 53px
 .hero.is-fullheight.has-fixed-navbar
   min-height: calc(100vh - #{$navbar-height + $footer-height})
 
+.theme-footer
+  font-size: .9rem
+  padding-top: .9rem!important
+  padding-bottom: .9rem!important
+  background-color: map-deep-get($color-palette, 'grey', 'dark')!important
+  color: map-deep-get($color-palette, 'white', 'text')!important

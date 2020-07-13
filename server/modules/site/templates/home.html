@@ -1,32 +1,35 @@
 {% extends "base.html" %}
 
 {% block main %}
-<div class="hero is-fullheight has-fixed-navbar">
-  <div class="hero-body">
-    <div class="container has-text-centered">
-      <div class="column is-12 is offset-2">
-        <h2 class="title">{{ title }}</h2>
-        <h3 class="subtitle">developer.</h3>
-        <div>
-          <button class="button is-link is-outlined">bio</button>
-          <button class="button is-link is-outlined">projects</button>
-          <button class="button is-link is-outlined">github</button>
-          <button class="button is-link is-outlined">contact</button>
+<div id="mount">
+  <div class="hero is-fullheight has-fixed-navbar">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <div class="columns">
+          <div id="title" class="column is-6 is-offset-3">
+            <h2 class="title">{{ title }}</h2>
+            <h3 class="subtitle">developer.</h3>
+          </div>
+        </div>
+        <div class="columns">
+          <div id="content" class="column is-6-desktop is-offset-3-desktop is-8-tablet is-offset-2-tablet">
+            <div class="box">
+              content.
+            </div>
+          </div>
+        </div>
+        <div class="columns">
+          <div id="selectors" class="column is-12">
+            <div>
+              <a class="button is-link is-outlined">bio</a>
+              <a class="button is-link is-outlined">projects</a>
+              <a class="button is-link is-outlined" href="https://github.com/camvrgs">github</a>
+              <a class="button is-link is-outlined">contact</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-{% endblock %}
-{% block footer %}
-  <div class="theme-color">
-    <div style="height:25px;width:25px;" class="theme-color bg-light"></div>
-    <div style="height:25px;width:25px;" class="theme-color bg-black"></div>
-    <div style="height:25px;width:25px;" class="theme-color bg-grey"></div>
-    <div style="height:25px;width:25px;" class="theme-color bg-iceblue"></div>
-    <div style="height:25px;width:25px;" class="theme-color bg-blue"></div>
-    <div style="height:25px;width:25px;" class="theme-color bg-darkblue"></div>
-    <div style="height:25px;width:25px;" class="theme-color bg-red"></div>
-    <div style="height:25px;width:25px;" class="theme-color bg-orange"></div>
-  </div>
 {% endblock %}

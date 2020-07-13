@@ -1,0 +1,27 @@
+//  build theme-color classes
+@use './color-palette' as *;
+
+/// using any map, parse and generate classes with set attributes
+/// ex:
+/// .class: @include map-parser(*args)
+/// white: (base: #000, light: #eee) -> .class-white & .class-white-light
+
+@mixin map-parser($map, $attribute, $base: 'base') {
+  @each $key, $value in $map {
+    &#{if($key != $base, -#{$key}, '')} {
+      @if type-of($value) == 'map' {
+        @include map-parser($value, $attribute, $base);
+      }
+      @else {
+        #{$attribute}: $value!important;
+      }
+    }
+  }
+}
+
+.theme-bg {
+  @include map-parser($color-palette, 'background-color', 'base');
+}
+.theme-text {
+  @include map-parser($color-palette, 'color', 'base');
+}

@@ -1,0 +1,6 @@
+/// bulma-color-override
+@use './map-deep-get' as *
+@use './color-palette' as *
+
+$primary: map-deep-get($color-palette, 'blue', 'base') !default
+$link: map-deep-get($color-palette, 'blue', 'base') !default

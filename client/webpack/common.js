@@ -85,6 +85,7 @@ module.exports = {
         test: /\.css$/,
         include: path.resolve('./src/styles/'),
         use: [
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'postcss-loader'
         ]
@@ -93,6 +94,7 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         include: path.resolve('./src/styles/'),
         use: [
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {

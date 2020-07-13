@@ -11,8 +11,8 @@ server_postgres_db_name = 'db_postgres_server'
 server_postgres_username = 'admin3Tj6e'
 client_project_name = 'app'
 client_project_description = 'Portfolio site with Django + React-Redux'
-client_app_style_slug = 'app_style'
-client_app_slug = 'app'
+client_app_style_slug = ['app_style_partials', 'app_style_vendor']
+client_app_slug = ['polyfills', 'vendors', 'app']
 date_generated = 'July 06, 2020 - 15:02'
 
 def index(request):
@@ -36,6 +36,7 @@ def home(request):
 		'title': 'Cameron Vargas',
 		'client_app_style_slug': client_app_style_slug,
 		'client_app_slug': client_app_slug,
+		'repo': 'https://github.com/camvrgs'
 	}
 
 	return render(request, 'home.html', context)

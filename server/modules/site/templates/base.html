@@ -4,8 +4,10 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% render_bundle client_app_style_slug 'css' %}
-    <link rel="icon" type="image/png" href="{% static 'icons/simple_c-50.png' %}"/>
+    {% for style in client_app_style_slug %}
+      {% render_bundle style 'css' %}
+    {% endfor %}
+    <link rel="icon" type="image/png" href="{% static 'icons/simple_c_50.png' %}"/>
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
 
     {% block extraheadstyles %}{% endblock %}
@@ -14,16 +16,26 @@
     {% block body %}
     <header>
       {% block header %}
-        <nav class="navbar theme-bg-blue" role="navigation" aria-label="main navigation">
+        <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
             <a class="navbar-item" href="/">
-              <img style="width:30px;height:30px;" src="{% static 'icons/simple_c-300.png' %}" srcset="{% static 'icons/simple_c.svg' %}" alt="Simple C Logo">
+              <img style="width:30px;height:30px;" src="{% static 'icons/simple_c_300.png' %}" srcset="{% static 'icons/simple_c.svg' %}" alt="Simple C Logo">
             </a>
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
+            {% block headerburger %}
+              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            {% endblock %}
+            {% block headermenu %}
+              <div id="navMenu" class="navbar-menu">
+                <div class="navbar-start">
+                  <a class="navbar-item" href="/">Home</a>
+                  <a class="navbar-item" href="{{ repo }}">Repository</a>
+                </div>
+              </div>
+            {% endblock %}
           </div>
         </nav>
       {% endblock %}
@@ -31,29 +43,19 @@
     <main style="flex: 1;">
       {% block main %}{% endblock %}
     </main>
-    <footer class="footer is-dark" style="font-size: .9rem; padding-top: .9rem!important; padding-bottom: .9rem!important; background-color: #363636; color: whitesmoke;">
+    <footer class="footer is-dark theme-footer has-text-centered">
       {% block footer %}
-        <nav class="level">
-          <div class="is-dark has-text-centered level-left">
-            <div class="level-item">
-              <span>Generated from <a class='tag is-small is-rounded is-light' href='https://github.com/audreyr/cookiecutter'>Cookiecutter</a> on {{ date_generated }}</span>
-            </div>
-          </div>
-          <div class="is-dark has-text-centered level-right">
-            <div class="level-item">
-              <a href="https://bulma.io">
-                <img src="https://bulma.io/images/made-with-bulma--white.png" alt="Made with Bulma" width="128" height="24">
-              </a>
-            </div>
-          </div>
-        </nav>
+      <div>
+        <span>Source code licensed <a class='has-text-link theme-text-blue' href='https://opensource.org/licenses/MIT'>MIT</a>.</span>
+        <span>Website content licensed <a class='has-text-link theme-text-blue' href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>CC BY-NC-SA 4.0</a>.</span>
+      </div>
       {% endblock %}
     </footer>
     {% endblock %}
   </body>
-  {% render_bundle 'polyfills' 'js' %}
-  {% render_bundle 'commons' 'js' %}
-  {% render_bundle client_app_slug 'js' %}
+  {% for script in client_app_slug %}
+    {% render_bundle script 'js' %}
+  {% endfor %}
 
   {% block jsmodules %}{% endblock %}
 </html>
