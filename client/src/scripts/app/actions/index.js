@@ -27,6 +27,38 @@ export const resetCounter = () => {
   }
 }
 
+// Page Actions //
+
+export const setPage = (pageProps, pageID) => {
+  return {
+    type: actionType.SET_PAGE,
+    pageProps,
+    pageID
+  }
+}
+
+export const resetPage = () => {
+  return {
+    type: actionType.RESET_PAGE
+  }
+}
+
+// Modal Actions //
+
+export const setModal = (modalProps, modalType) => {
+  return {
+    type: actionType.SET_MODAL,
+    modalProps,
+    modalType
+  }
+}
+
+export const resetModal = () => {
+  return {
+    type: actionType.RESET_MODAL
+  }
+}
+
 /**
  *
  *  EXAMPLE ACTION CREATORS:

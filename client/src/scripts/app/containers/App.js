@@ -19,51 +19,61 @@ import PropTypes from 'prop-types'
 
 import * as actions from '../actions'
 
-import ClickCounter from '../components/ClickCounter'
-import ReactSpinner from '../components/ReactSpinner'
+import ModalController from '../components/ModalController'
+import PageController from '../components/PageController'
 
 export class App extends Component {
   constructor(props) {
     super(props)
-    this.handleReactClick = this.handleReactClick.bind(this)
-    this.handleCounterClick = this.handleCounterClick.bind(this)
+
+    this.handlePageUpdate = this.handlePageUpdate.bind(this)
+    this.handlePageReset = this.handlePageReset.bind(this)
+    this.handleModalUpdate = this.handleModalUpdate.bind(this)
+    this.handleModalClose = this.handleModalClose.bind(this)
+
+    console.log('alive')
   }
 
-  UNSAFE_componentWillMount() {
+  handlePageUpdate(page) {
+    this.props.actions.setPage(page.props, page.id)
   }
-
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  handlePageReset() {
+    this.props.actions.resetPage()
   }
-
-  handleReactClick() {
-    const current_click_num = this.props.clicks
-    this.props.actions.updateCounter(current_click_num + 1)
+  handleModalUpdate(modal) {
+    // setModal(modalProps, modalType)
+    this.props.actions.setModal(modal.props, modal.id)
   }
-  handleCounterClick() {
-    this.props.actions.resetCounter()
+  handleModalClose() {
+    this.props.actions.resetModal()
   }
 
   render() {
     return (
       <div className='app-container'>
-        <ReactSpinner
-          elementText={'React has rendered successfully!'}
-          handleEvent={this.handleReactClick}
+        <ModalController
+          modalType={this.props.modal.modalType}
+          modalProps={this.props.modal.modalProps}
+          closeModal={() => this.handleModalClose()}
         />
-        <ClickCounter
-          elementText={this.props.clicks}
-          handleEvent={this.handleCounterClick}
-        />
+        <div className="hero is-fullheight has-fixed-navbar">
+          <div className="hero-body">
+            <PageController
+              pageID={this.props.page.pageID}
+              pageProps={this.props.page.pageProps}
+              pageNavigation={this.handlePageUpdate}
+              openModal={this.handleModalUpdate}
+            />
+          </div>
+        </div>
       </div>
     )
   }
 }
 
 App.propTypes = {
-  clicks: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ]),
+  modal: PropTypes.object,
+  page: PropTypes.object,
   actions: PropTypes.object
 }
 
@@ -74,9 +84,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(state => {
-  const clicks = state.clicks
-
   return {
-    clicks
+    'modal': state.modal,
+    'page': state.page
   }
 }, mapDispatchToProps)(App)

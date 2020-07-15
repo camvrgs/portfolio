@@ -26,7 +26,7 @@ def index(request):
 		'client_name': client_project_name,
 		'client_desc': client_project_description,
 		'client_app_style_slug': client_app_style_slug,
-		'client_app_slug': client_app_slug,
+		'client_app_slug': 'app',
 	}
 
 	return render(request, 'index.html', context)
@@ -36,7 +36,7 @@ def home(request):
 		'title': 'Cameron Vargas',
 		'client_app_style_slug': client_app_style_slug,
 		'client_app_slug': client_app_slug,
-		'repo': 'https://github.com/camvrgs'
+		'repo': 'https://github.com/camvrgs/portfolio'
 	}
 
 	return render(request, 'home.html', context)

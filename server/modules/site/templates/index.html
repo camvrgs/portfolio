@@ -4,7 +4,9 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% render_bundle client_app_style_slug 'css' %}
+    {% for style in client_app_style_slug %}
+      {% render_bundle style 'css' %}
+    {% endfor %}
     <link rel="stylesheet" href="{% static 'styles/bulma.css' %}">
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
   </head>
@@ -144,6 +146,6 @@
     </footer>
   </body>
   {% render_bundle 'polyfills' 'js' %}
-  {% render_bundle 'commons' 'js' %}
+  {% render_bundle 'vendors' 'js' %}
   {% render_bundle client_app_slug 'js' %}
 </html>
