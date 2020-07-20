@@ -14,19 +14,6 @@
 
 import * as actionType from './types'
 
-export const updateCounter = (data) => {
-  return {
-    type: actionType.UPDATE_COUNTER,
-    data
-  }
-}
-
-export const resetCounter = () => {
-  return {
-    type: actionType.RESET_COUNTER
-  }
-}
-
 // Page Actions //
 
 export const setPage = (pageProps, pageID) => {

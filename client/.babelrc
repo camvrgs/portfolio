@@ -1,17 +1,12 @@
 {
     "presets": [
-	    ["env",
-	        {"targets":
-	            {"browsers":
-	                ["last 2 versions", "> 1%", "ie >= 8", "edge >= 14"]
-	            },
-	        "useBuiltIns": true,
+	    ["@babel/preset-env",
+	      {
+	        "useBuiltIns": "entry",
 	        "debug": true
-	        }
+	      }
 	    ],
-    "react",
-    "stage-2",
-    "es2015"
+      "@babel/react"
     ],
     "plugins": ["transform-object-assign"]
 }

@@ -20,5 +20,8 @@
       "asyncArrow": "always"
     }],
     "react/prop-types": 1
+  },
+  "env": {
+    "jest": true
   }
 }

@@ -16,14 +16,12 @@
 import { combineReducers } from 'redux'
 
 // * * Import reducers here * * //
-import clickCounterReducer from './clickCounter'
 import pageUpdaterReducer from './pageUpdater'
 import modalUpdaterReducer from './modalUpdater'
 // * * End import * * //
 
 const rootReducer = combineReducers({
   // store_variable: importedReducer,
-  clicks: clickCounterReducer,
   modal: modalUpdaterReducer,
   page: pageUpdaterReducer
 })

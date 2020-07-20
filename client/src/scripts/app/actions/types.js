@@ -22,9 +22,6 @@
  *
  **/
 
-export const UPDATE_COUNTER = 'update_click_counter'
-export const RESET_COUNTER = 'reset_click_counter'
-
 // Page Action Types //
 export const SET_PAGE = 'set_page'
 export const RESET_PAGE = 'reset_page'

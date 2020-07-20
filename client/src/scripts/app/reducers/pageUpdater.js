@@ -22,7 +22,7 @@
 
 import * as actionType from '../actions/types'
 
-const initialState = {
+export const initialState = {
   pageProps: {
     active: true
   },
