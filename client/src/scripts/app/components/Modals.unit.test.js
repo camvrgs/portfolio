@@ -6,7 +6,7 @@
  *  actions/.
  *  Modals.unit.test.js
  *
- *  tests all action creators
+ *  tests Modal component prototypes
  *
  *  ~ Cameron Vargas ~
  **/
