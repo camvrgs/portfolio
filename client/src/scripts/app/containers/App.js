@@ -21,6 +21,7 @@ import * as actions from '../actions'
 
 import ModalController from '../components/ModalController'
 import PageController from '../components/PageController'
+import LandingPage from '../components/LandingPage'
 
 export class App extends Component {
   constructor(props) {
@@ -50,22 +51,13 @@ export class App extends Component {
 
   render() {
     return (
-      <div className='app-container'>
+      <div className=''>
         <ModalController
           modalType={this.props.modal.modalType}
           modalProps={this.props.modal.modalProps}
           closeModal={() => this.handleModalClose()}
         />
-        <div className="hero is-fullheight has-fixed-navbar">
-          <div className="hero-body">
-            <PageController
-              pageID={this.props.page.pageID}
-              pageProps={this.props.page.pageProps}
-              pageNavigation={this.handlePageUpdate}
-              openModal={this.handleModalUpdate}
-            />
-          </div>
-        </div>
+        <LandingPage />
       </div>
     )
   }

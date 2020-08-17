@@ -12,4 +12,4 @@
  *  ~ Cameron Vargas ~
  **/
 
-import 'babel-polyfill'
+import '@babel/polyfill'

@@ -21,9 +21,7 @@ import store from './store'
 
 ReactDOM.render(
   <Provider store={store}>
-    <div className='app'>
-      <App />
-    </div>
+    <App />
   </Provider>
   , document.querySelector('.mount')
 )
